@@ -1,6 +1,6 @@
 ﻿namespace JokenPo.clean.Enums
 {
-    public enum Opcao
+    public enum OpcaoJogador
     {
         Pedra,
         Papel,

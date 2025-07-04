@@ -4,56 +4,48 @@ namespace JokenPo.clean.Entities
 {
     public class Jogo
     {
-        private Jogador jogador;
-        private Jogador computador;
+        private Jogador _jogadorHumano;
+        private Jogador _jogadorMaquina;
 
-        public Jogo(Jogador jogador)
+        public Jogo(string nomeJogador, string nomeMaquina)
         {
-            this.jogador = jogador;
-            this.computador = new Jogador("Computador");
+            _jogadorHumano = new Humano(nomeJogador);
+            _jogadorMaquina = new Maquina(nomeMaquina);
         }
 
-        public string RodarJogo()
+        private bool ValidarJogada()
         {
-            computador.FazerEscolha(EscolhaAleatorio());
-            string resultado = CompararEscolhas(jogador.Escolha, computador.Escolha);
-            return resultado;
+            return Enum.IsDefined(typeof(OpcaoJogador), _jogadorHumano.JogadaEscolhida);
         }
 
-        public Opcao ObterEscolhaComputador()
+        public void Iniciar()
         {
-            return computador.Escolha;
-        }
 
-        private Opcao EscolhaAleatorio()
-        {
-            Random random = new Random();
-            return (Opcao)random.Next(0, 3);
-        }
+            _jogadorHumano.FazerJogada();
+            _jogadorMaquina.FazerJogada();
 
-        private string CompararEscolhas(Opcao escolhaJogador, Opcao escolhaComputador)
-        {
-            if (!Enum.IsDefined(typeof(Opcao), escolhaJogador) || !Enum.IsDefined(typeof(Opcao), escolhaComputador))
+            if (!ValidarJogada())
             {
-                return "Escolha inválida.";
+                Console.WriteLine("Jogada inválida!");
+                return;
             }
-
-
-            if (escolhaJogador == escolhaComputador)
+            VerificarVencedor();
+        }
+        private void VerificarVencedor()
+        {
+            if (_jogadorHumano.JogadaEscolhida == _jogadorMaquina.JogadaEscolhida)
             {
-                return "Empate!";
+                Console.WriteLine("Empate!");
             }
-
-            switch (escolhaJogador)
+            else if ((_jogadorHumano.JogadaEscolhida == OpcaoJogador.Pedra && _jogadorMaquina.JogadaEscolhida == OpcaoJogador.Tesoura) ||
+                     (_jogadorHumano.JogadaEscolhida == OpcaoJogador.Papel && _jogadorMaquina.JogadaEscolhida == OpcaoJogador.Pedra) ||
+                     (_jogadorHumano.JogadaEscolhida == OpcaoJogador.Tesoura && _jogadorMaquina.JogadaEscolhida == OpcaoJogador.Papel))
             {
-                case Opcao.Pedra:
-                    return escolhaComputador == Opcao.Tesoura ? $"{this.jogador.Nome} venceu!" : "O Computador venceu!";
-                case Opcao.Papel:
-                    return escolhaComputador == Opcao.Pedra ? $"{this.jogador.Nome} venceu!" : "O Computador venceu!";
-                case Opcao.Tesoura:
-                    return escolhaComputador == Opcao.Papel ? $"{this.jogador.Nome} venceu!" : "O Computador venceu!";
-                default:
-                    return "Erro ao comparar opções.";
+                Console.WriteLine($"{_jogadorHumano.Nome} venceu!");
+            }
+            else
+            {
+                Console.WriteLine($"{_jogadorMaquina.Nome} venceu!");
             }
         }
     }

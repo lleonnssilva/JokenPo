@@ -2,19 +2,12 @@
 
 namespace JokenPo.clean.Entities
 {
-    public class Jogador
+    public abstract class Jogador
     {
-        public string Nome { get; private set; }
-        public Opcao Escolha { get; private set; }
+        public string Nome { get; protected set; }
+        public OpcaoJogador JogadaEscolhida { get; protected set; }
+        public abstract void FazerJogada();
 
-        public Jogador(string nome)
-        {
-            Nome = nome;
-        }
-
-        public void FazerEscolha(Opcao escolha)
-        {
-            Escolha = escolha;
-        }
+        
     }
 }
