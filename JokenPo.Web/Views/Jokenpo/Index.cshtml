@@ -1,0 +1,12 @@
+﻿@model string
+<h1>Jogo Jokenpo</h1>
+
+<form method="post" asp-action="JogarContraComputador">
+    <label for="escolhaJogador">Escolha: </label>
+    <select name="escolhaJogador" id="escolhaJogador">
+        <option value="Pedra">Pedra</option>
+        <option value="Papel">Papel</option>
+        <option value="Tesoura">Tesoura</option>
+    </select>
+    <button type="submit">Jogar</button>
+</form>
