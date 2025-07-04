@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokenPo.Web", "JokenPo.Web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokenPo.Console", "JokenPo.Console\JokenPo.Console.csproj", "{FAD5DD35-6706-4C46-8BDB-9D1468678043}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokenPo.clean", "JokenPo.clean\JokenPo.clean.csproj", "{48020714-405F-49D4-AB73-6707C4BC3268}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FAD5DD35-6706-4C46-8BDB-9D1468678043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAD5DD35-6706-4C46-8BDB-9D1468678043}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAD5DD35-6706-4C46-8BDB-9D1468678043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48020714-405F-49D4-AB73-6707C4BC3268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48020714-405F-49D4-AB73-6707C4BC3268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48020714-405F-49D4-AB73-6707C4BC3268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48020714-405F-49D4-AB73-6707C4BC3268}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
